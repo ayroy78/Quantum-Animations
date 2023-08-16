@@ -53,7 +53,7 @@ class GUI(Tk):
         self.maxsize(1600,750)
         self.minsize(1600,750)
         #title of our gui
-        self.title("Discrete Hamiltonian Spectrum")
+        self.title("Discrete 1D Anderson Model")
 
         self.choice = StringVar()
         self.choice.set("Radio")
@@ -67,14 +67,14 @@ class GUI(Tk):
         self.ax.plot(self.eigenvalues, c='blue')
         self.ax.axvline(x=self.ev.get(), c='black', linestyle='dashed')
         self.ax.axhline(y=self.eigenvalues[self.ev.get()-1], c='black', linestyle='dashed')
-        self.ax.set_title('Eigen Value Distribution')
+        self.ax.set_title('Eigenvalue Distribution')
         self.ax.set_xlabel('List Index')
-        self.ax.set_ylabel('Eigen Values')
+        self.ax.set_ylabel('Eigenvalues')
         
         #eigen vector plot on the right
         self.evec = self.eigenvectors[:,self.ev.get()-1]
         self.ax2.plot((self.evec)**2.0, c='blue')
-        self.ax2.set_title('Corresponding Eigen Vector')
+        self.ax2.set_title('Corresponding Eigenvector')
         self.ax2.set_xlabel('List Index')
         self.ax2.set_ylabel(r'$\left|\psi\right|^2$')
         self.ax2.set_ylim([np.min(self.evec**2.0)-0.001, np.max(self.evec**2.0)+0.001])
@@ -97,15 +97,15 @@ class GUI(Tk):
         self.ax.plot(self.eigenvalues, c='blue')
         self.ax.axvline(x=self.ev.get(), c='black', linestyle='dashed')
         self.ax.axhline(y=self.eigenvalues[self.ev.get()-1], c='black', linestyle='dashed')
-        self.ax.set_title('Eigen Value Distribution')
+        self.ax.set_title('Eigenvalue Distribution')
         self.ax.set_xlabel('List Index')
-        self.ax.set_ylabel('Eigen Values')
+        self.ax.set_ylabel('Eigenvalues')
        
 
         #eigen vector plot on the right
         self.evec = self.eigenvectors[:,self.ev.get()-1]
         self.ax2.plot((self.evec)**2.0, c='blue')
-        self.ax2.set_title('Corresponding Eigen Vector')
+        self.ax2.set_title('Corresponding Eigenvector')
         self.ax2.set_xlabel('List Index')
         self.ax2.set_ylabel(r'$\left|\psi\right|^2$')
         self.ax2.set_ylim([np.min(self.evec**2.0)-0.001, np.max(self.evec**2.0)+0.001])
@@ -114,12 +114,12 @@ class GUI(Tk):
 
 #########################################################################################################           
     def show_help(self):
-        tmsg.showinfo("Tips", "This applet shows the eigen values and eigen vectors of a random discrete Hamiltonian. Change the potential and dimension to see how the spectrum looks like.")
+        tmsg.showinfo("Tips", "This applet shows the eigenvalues and eigenvectors of a random discrete Hamiltonian according to the Anderson Model. Change the potential and dimension to see how the spectrum looks like.")
 #############################################################################################################    
     def make_title(self):
         f1 = Frame(self, bg='red', borderwidth=10, relief=GROOVE)
         f1.pack(side=TOP, fill=X, pady=10)
-        Label(f1, bg = "red", fg = "black", font = ("calibiri", 20, "bold"),  text = "Discrete Hamiltonian Spectrum").pack()
+        Label(f1, bg = "red", fg = "black", font = ("calibiri", 20, "bold"),  text = "Discrete 1D Anderson Model").pack()
 ##########################################################################################################################    
     def make_selection_frame(self):
         f2 = Frame(self, bg = "lightblue", borderwidth=10 , relief = RAISED)
@@ -139,7 +139,7 @@ class GUI(Tk):
         self.d.set(100)
         self.d.pack(side = LEFT, padx=10)
 
-        Label(f2, bg = "lightblue", fg ="black", font = ("calibiri", 10, "bold"), text="Eigen Value (Choose By Index)").pack(side = LEFT, padx=10)
+        Label(f2, bg = "lightblue", fg ="black", font = ("calibiri", 10, "bold"), text="Eigenvalue (Choose By Index)").pack(side = LEFT, padx=10)
         self.ev = Scale(f2, bg ='lightblue', fg='black',from_=1, to=self.d.get(), orient=HORIZONTAL)
         self.ev.set(1)
         self.ev.pack(side = LEFT, padx=10)
